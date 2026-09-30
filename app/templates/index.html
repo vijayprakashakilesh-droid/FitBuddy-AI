@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+
+{% block title %}
+FitBuddy - AI Fitness Planner
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <span class="badge">
+            🤖 AI FITNESS ASSISTANT
+        </span>
+
+        <h1>
+            Your Personal
+            <span>AI Fitness Buddy</span>
+        </h1>
+
+        <p>
+            Create a personalized 7-day workout plan and
+            nutrition tip using Generative AI.
+        </p>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <h2>
+            Create Your Fitness Plan
+        </h2>
+
+        <p class="form-subtitle">
+            Tell us about yourself.
+        </p>
+
+
+        {% if error %}
+
+        <div class="alert error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <form
+            action="/generate-workout"
+            method="post"
+        >
+
+            <div class="form-grid">
+
+
+                <div class="field">
+
+                    <label>
+                        User ID
+                    </label>
+
+                    <input
+                        type="text"
+                        name="user_id"
+                        placeholder="e.g. FB001"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        name="age"
+                        min="13"
+                        max="100"
+                        placeholder="Age"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Weight (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        name="weight"
+                        step="0.1"
+                        min="20"
+                        max="400"
+                        placeholder="e.g. 65"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Fitness Goal
+                    </label>
+
+                    <select
+                        name="goal"
+                        required
+                    >
+
+                        <option value="">
+                            Select your goal
+                        </option>
+
+                        <option value="Weight Loss">
+                            Weight Loss
+                        </option>
+
+                        <option value="Muscle Gain">
+                            Muscle Gain
+                        </option>
+
+                        <option value="General Wellness">
+                            General Wellness
+                        </option>
+
+                        <option value="Flexibility">
+                            Flexibility
+                        </option>
+
+                        <option value="Endurance">
+                            Endurance
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Workout Intensity
+                    </label>
+
+                    <div class="intensity-options">
+
+                        <label class="radio-card">
+
+                            <input
+                                type="radio"
+                                name="intensity"
+                                value="low"
+                                required
+                            >
+
+                            <span>
+                                🟢
+                                <strong>Low</strong>
+                                <small>Beginner friendly</small>
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-card">
+
+                            <input
+                                type="radio"
+                                name="intensity"
+                                value="medium"
+                            >
+
+                            <span>
+                                🟡
+                                <strong>Medium</strong>
+                                <small>Moderate challenge</small>
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-card">
+
+                            <input
+                                type="radio"
+                                name="intensity"
+                                value="high"
+                            >
+
+                            <span>
+                                🔴
+                                <strong>High</strong>
+                                <small>Advanced challenge</small>
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-btn"
+            >
+
+                ✨ Generate My 7-Day Plan
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div class="feature-card">
+
+        <div class="feature-icon">
+            🏋️
+        </div>
+
+        <h3>
+            Personalized Workouts
+        </h3>
+
+        <p>
+            AI creates a 7-day plan based on
+            your fitness goal and intensity.
+        </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+        <div class="feature-icon">
+            🥗
+        </div>
+
+        <h3>
+            Nutrition Tips
+        </h3>
+
+        <p>
+            Get a concise nutrition or recovery
+            recommendation.
+        </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+        <div class="feature-icon">
+            🔄
+        </div>
+
+        <h3>
+            AI Plan Updates
+        </h3>
+
+        <p>
+            Submit feedback and let AI adapt
+            your workout plan.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

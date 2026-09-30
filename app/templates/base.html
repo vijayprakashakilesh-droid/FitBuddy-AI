@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}FitBuddy{% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='styles.css') }}"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a
+        href="/"
+        class="brand"
+    >
+        <span class="brand-icon">💪</span>
+        FitBuddy
+    </a>
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/view-all-users">
+            Admin
+        </a>
+
+        <a href="/docs">
+            API
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="main-container">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<footer>
+
+    <p>
+        FitBuddy — AI Fitness Plan Generator
+    </p>
+
+    <p class="small">
+        AI-generated fitness guidance is not a substitute for professional medical advice.
+    </p>
+
+</footer>
+
+</body>
+
+</html>

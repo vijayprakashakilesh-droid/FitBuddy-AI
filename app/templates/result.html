@@ -1,0 +1,363 @@
+{% extends "base.html" %}
+
+{% block title %}
+FitBuddy - Your Workout Plan
+{% endblock %}
+
+
+{% block content %}
+
+{% if error %}
+
+<div class="alert error">
+
+    {{ error }}
+
+</div>
+
+<a
+    href="/"
+    class="secondary-btn"
+>
+    ← Back to Home
+</a>
+
+{% else %}
+
+
+<section class="result-header">
+
+    <span class="badge">
+        {% if updated %}
+            🔄 UPDATED PLAN
+        {% else %}
+            ✨ AI GENERATED PLAN
+        {% endif %}
+    </span>
+
+    <h1>
+        Hello, {{ user.name }}!
+    </h1>
+
+    <p>
+        Here is your personalized fitness plan.
+    </p>
+
+</section>
+
+
+<section class="profile-grid">
+
+    <div class="profile-card">
+
+        <span>
+            User ID
+        </span>
+
+        <strong>
+            {{ user.user_id }}
+        </strong>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <span>
+            Age
+        </span>
+
+        <strong>
+            {{ user.age }}
+        </strong>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <span>
+            Weight
+        </span>
+
+        <strong>
+            {{ user.weight }} kg
+        </strong>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <span>
+            Goal
+        </span>
+
+        <strong>
+            {{ user.goal }}
+        </strong>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <span>
+            Intensity
+        </span>
+
+        <strong class="capitalize">
+            {{ user.intensity }}
+        </strong>
+
+    </div>
+
+</section>
+
+
+<section class="plan-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                7-DAY PROGRAM
+            </span>
+
+            <h2>
+                {{ workout_plan.title }}
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="days-container">
+
+        {% for day in workout_plan.days %}
+
+        <article class="day-card">
+
+            <div class="day-header">
+
+                <div class="day-number">
+                    {{ loop.index }}
+                </div>
+
+                <div>
+
+                    <h3>
+                        {{ day.day }}
+                    </h3>
+
+                    <span>
+                        {{ day.focus }}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="workout-content">
+
+                <div class="warmup">
+
+                    <strong>
+                        🔥 Warm-up
+                    </strong>
+
+                    <p>
+                        {{ day.warmup }}
+                    </p>
+
+                </div>
+
+
+                <h4>
+                    Exercises
+                </h4>
+
+
+                <div class="exercise-list">
+
+                    {% for exercise in day.exercises %}
+
+                    <div class="exercise">
+
+                        <div>
+
+                            <strong>
+                                {{ exercise.name }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="exercise-details">
+
+                            {% if exercise.sets %}
+
+                            <span>
+                                Sets: {{ exercise.sets }}
+                            </span>
+
+                            {% endif %}
+
+
+                            {% if exercise.reps %}
+
+                            <span>
+                                Reps: {{ exercise.reps }}
+                            </span>
+
+                            {% endif %}
+
+
+                            {% if exercise.duration %}
+
+                            <span>
+                                Duration: {{ exercise.duration }}
+                            </span>
+
+                            {% endif %}
+
+
+                            {% if exercise.rest %}
+
+                            <span>
+                                Rest: {{ exercise.rest }}
+                            </span>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="cooldown">
+
+                    <strong>
+                        🧘 Cooldown / Recovery
+                    </strong>
+
+                    <p>
+                        {{ day.cooldown }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<section class="nutrition-card">
+
+    <div class="nutrition-icon">
+        🥗
+    </div>
+
+    <div>
+
+        <span class="section-label">
+            NUTRITION & RECOVERY
+        </span>
+
+        <h2>
+            Your AI Tip
+        </h2>
+
+        <p>
+            {{ nutrition_tip }}
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="feedback-section">
+
+    <span class="section-label">
+        PERSONALIZE YOUR PLAN
+    </span>
+
+    <h2>
+        Want to change your plan?
+    </h2>
+
+    <p>
+        Tell FitBuddy what you want to improve.
+        For example: "Add more cardio" or
+        "Include more rest days."
+    </p>
+
+
+    <form
+        action="/submit-feedback"
+        method="post"
+    >
+
+        <input
+            type="hidden"
+            name="user_id"
+            value="{{ user.user_id }}"
+        >
+
+
+        <textarea
+            name="feedback"
+            rows="5"
+            placeholder="Enter your feedback..."
+            required
+        ></textarea>
+
+
+        <button
+            type="submit"
+            class="primary-btn"
+        >
+            🔄 Update My Plan
+        </button>
+
+    </form>
+
+</section>
+
+
+<div class="bottom-actions">
+
+    <a
+        href="/"
+        class="secondary-btn"
+    >
+        ← Create Another Plan
+    </a>
+
+    <a
+        href="/view-all-users"
+        class="secondary-btn"
+    >
+        View Admin Dashboard →
+    </a>
+
+</div>
+
+
+{% endif %}
+
+{% endblock %}
