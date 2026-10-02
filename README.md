@@ -36,4 +36,4 @@ Check:
 
 ```bash
 python --version
----
+```
