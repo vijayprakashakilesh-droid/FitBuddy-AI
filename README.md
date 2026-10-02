@@ -37,3 +37,10 @@ Check:
 ```bash
 python --version
 ```
+## 🚀 Live Demo
+
+Experience FitBuddyAI online:
+
+👉 [**Launch FitBuddyAI**](https://fitbuddy-ai-pdc2.onrender.com/)
+
+> The application is deployed on **Render** and is available for online use.
