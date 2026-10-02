@@ -36,31 +36,4 @@ Check:
 
 ```bash
 python --version
-# 🏋️ FitBuddyAI
-
-### Your AI-Powered Personal Fitness Companion
-
-**FitBuddyAI** is a modern AI-powered fitness platform that helps users create personalized workout plans, track their progress, interact with an AI fitness assistant, and stay motivated through gamification.
-
-🌐 **Live Demo:**  
-[https://fitbuddy-ai-pdc2.onrender.com/](https://fitbuddy-ai-pdc2.onrender.com/)
-
 ---
-
-## 🚀 Live Demo
-
-Experience FitBuddyAI online:
-
-👉 [**Launch FitBuddyAI**](https://fitbuddy-ai-pdc2.onrender.com/)
-
-> The application is deployed on **Render** and is available for online use.
-
----
-
-
-## 🌐 Deployment
-
-### Production
-
-**Live Application:**  
-[https://fitbuddy-ai-pdc2.onrender.com/](https://fitbuddy-ai-pdc2.onrender.com/)
